@@ -37,7 +37,7 @@ io.on('connection', (socket)=> {
 
     socket.on('joinRoom', (data) => {
         // Ensure `data.room` and `data.user` are defined
-        console.log(data)
+        // console.log(data)
         if (data?.room && data?.user) {
             socket.join(data.room);
             // Notify others in the room about the new user
@@ -47,7 +47,7 @@ io.on('connection', (socket)=> {
     });
 
     socket.on('send-message', ({ room, message, user }) => {
-        console.log(room, message, user)
+        // console.log(room, message, user)
         socket.to(room).emit('receive-message', {msg : message, userName : user});
     });
 
@@ -67,7 +67,7 @@ io.on('connection', (socket)=> {
     })
    
     socket.on('seekTime-host', ({time, user, room})=> {
-        console.log(time)
+        // console.log(time)
         socket.to(room).emit('receive-message', {msg: `seeked time to ${time}`, userName:user})
         socket.to(room).emit('seekTo', (time))
     })
@@ -76,6 +76,6 @@ io.on('connection', (socket)=> {
 })
 
 const port = 8080 || process.env.PORT
-server.listen(8080, ()=> {
+server.listen(port, ()=> {
     console.log(`Server running on port 8080`)
 })
