@@ -8,7 +8,7 @@ const server = http.createServer(app)
 const io = new Server(server, {
     serveClient: false,
     cors: {
-        origin: 'http://localhost:3000',
+        origin: 'https://musify-client-mu.vercel.app',
         methods: ['GET', 'POST']
     }
 })
